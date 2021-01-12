@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Whats Stories</string>
+    <string name="story_fr">Looks like nobody has any story yet\.\.\. if they do i can sniff it.</string>
+    <string name="navigation_drawer_open">open</string>
+    <string name="navigation_drawer_close">close</string>
+
+</resources>

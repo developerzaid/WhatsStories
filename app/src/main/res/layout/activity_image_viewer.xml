@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#efefef"
+    android:orientation="vertical"
+    tools:context=".DataViewer">
+
+
+<!--    <include-->
+<!--        android:id="@+id/main_page_toolbar"-->
+<!--        layout="@layout/app_bar_layout"-->
+<!--         />-->
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <ImageView
+            android:id="@+id/imageViewer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <ImageButton
+            android:id="@+id/playButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            app:srcCompat="@drawable/play" />
+
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginStart="6dp"
+        android:layout_marginEnd="6dp"
+        android:layout_marginBottom="6dp"
+        android:orientation="horizontal">
+
+        <ImageButton
+
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:id="@+id/imageDownload"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/ic_file_download_black_24dp"
+            tools:ignore="VectorDrawableCompat">
+
+        </ImageButton>
+
+        <ImageButton
+            android:id="@+id/share"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/ic_share_black_24dp_big"
+            tools:ignore="VectorDrawableCompat">
+
+        </ImageButton>
+
+        <!--        <ImageButton-->
+        <!--            android:id="@+id/delete"-->
+        <!--            android:layout_width="0dp"-->
+        <!--            android:layout_height="match_parent"-->
+        <!--            android:layout_weight="1"-->
+
+        <!--            android:background="?attr/selectableItemBackgroundBorderless"-->
+        <!--            app:srcCompat="@drawable/ic_delete_black_24dp"-->
+        <!--            tools:ignore="VectorDrawableCompat">-->
+
+        <!--        </ImageButton>-->
+
+    </LinearLayout>
+
+
+</LinearLayout>
