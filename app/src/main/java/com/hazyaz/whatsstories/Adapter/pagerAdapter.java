@@ -28,7 +28,7 @@ public class pagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return 6;
+        return 2;
     }
 
 
@@ -42,32 +42,32 @@ public class pagerAdapter extends FragmentPagerAdapter {
 
 
             case 1:
-//                if (mInterstitialAd.isLoaded()) {
-//                    mInterstitialAd.show();
-//                }
-//
-//                mInterstitialAd.setAdListener(new AdListener() {
-//                    @Override
-//                    public void onAdLoaded() {
-//                        // Code to be executed when an ad finishes loading.
-//                    }
-//
-//                    @Override
-//                    public void onAdFailedToLoad(LoadAdError adError) {
-//                        mInterstitialAd.loadAd(new AdRequest.Builder().build());
-//                    }
-//
-//                    @Override
-//                    public void onAdOpened() {
-//                        mInterstitialAd.loadAd(new AdRequest.Builder().build());
-//
-//                    }
-//
-//                    @Override
-//                    public void onAdClosed() {
-//                        mInterstitialAd.loadAd(new AdRequest.Builder().build());
-//                    }
-//                });
+                if (mInterstitialAd.isLoaded()) {
+                    mInterstitialAd.show();
+                }
+
+                mInterstitialAd.setAdListener(new AdListener() {
+                    @Override
+                    public void onAdLoaded() {
+                        mInterstitialAd.show();
+                    }
+
+                    @Override
+                    public void onAdFailedToLoad(LoadAdError adError) {
+                        mInterstitialAd.loadAd(new AdRequest.Builder().build());
+                    }
+
+                    @Override
+                    public void onAdOpened() {
+                        mInterstitialAd.loadAd(new AdRequest.Builder().build());
+
+                    }
+
+                    @Override
+                    public void onAdClosed() {
+                        mInterstitialAd.loadAd(new AdRequest.Builder().build());
+                    }
+                });
 
                 return new WhatsAppBSFragment();
 

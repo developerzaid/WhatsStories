@@ -3,7 +3,6 @@ package com.hazyaz.whatsstories.whatsapp;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,7 +35,7 @@ public class WhatsAppFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull final LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        mMainView = inflater.inflate(R.layout.whatsapp_fragment, container, false);
+        mMainView = inflater.inflate(R.layout.whatsapp_fragment, null, false);
 
         mGridview = mMainView.findViewById(R.id.gridview);
         mNoData = mMainView.findViewById(R.id.NoDataRecyclerView);
@@ -44,45 +43,45 @@ public class WhatsAppFragment extends Fragment {
 
         File recent = new File(Environment.getExternalStorageDirectory(), "/WhatsApp/Media/.Statuses");
         Lfiles = recent.listFiles();
+if(Lfiles != null) {
+    for (File f : Lfiles) {
 
-        for (File f:Lfiles) {
-
-            f.getName();
-            if (f.getName().trim().equalsIgnoreCase(".nomedia")) {
-                f.delete();
-                continue;
-            }
+        f.getName();
+        if (f.getName().trim().equalsIgnoreCase(".nomedia")) {
+            f.delete();
+            continue;
         }
-        File recentnew = new File(Environment.getExternalStorageDirectory(), "/WhatsApp/Media/.Statuses");
-        Lfiles = recentnew.listFiles();
+    }
 
-        if (Lfiles!=null){
-            Arrays.sort(Lfiles, new Comparator() {
-                public int compare(Object o1, Object o2) {
+    if (Lfiles != null) {
+        Arrays.sort(Lfiles, new Comparator() {
+            public int compare(Object o1, Object o2) {
 
-                    if (((File) o1).lastModified() > ((File) o2).lastModified()) {
-                        return -1;
-                    } else if (((File) o1).lastModified() < ((File) o2).lastModified()) {
-                        return +1;
-                    } else {
-                        return 0;
-                    }
+                if (((File) o1).lastModified() > ((File) o2).lastModified()) {
+                    return -1;
+                } else if (((File) o1).lastModified() < ((File) o2).lastModified()) {
+                    return +1;
+                } else {
+                    return 0;
                 }
-            });
-            files = new String[Lfiles.length];
-
-
-            int i=0;
-
-            for(File f:Lfiles){
-                files[i]=f.getAbsolutePath();
-                i++;
-
             }
+        });
+        files = new String[Lfiles.length];
 
-        }else{
-            files=null;
+
+        int i = 0;
+
+        for (File f : Lfiles) {
+            files[i] = f.getAbsolutePath();
+            i++;
+
         }
+
+    } else {
+        files = null;
+    }
+}
+
 
         if (files!=null){
 

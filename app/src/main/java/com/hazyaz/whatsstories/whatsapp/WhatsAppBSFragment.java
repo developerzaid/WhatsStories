@@ -36,54 +36,55 @@ public class WhatsAppBSFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull final LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        mMainView = inflater.inflate(R.layout.whatsapp_bs_fragment, container, false);
+        mMainView = inflater.inflate(R.layout.whatsapp_bs_fragment, null, false);
 
         mGridview = mMainView.findViewById(R.id.gridview);
         mNoData = mMainView.findViewById(R.id.NoDataRecyclerView);
 
 
-        File recent = new File(Environment.getExternalStorageDirectory(), "/WhatsApp/Media/.Statuses");
+        File recent = new File(Environment.getExternalStorageDirectory(), "/WhatsApp Business/Media/.Statuses");
         Lfiles = recent.listFiles();
 
-        for (File f:Lfiles) {
+        if(Lfiles != null) {
+            for (File f : Lfiles) {
 
-            f.getName();
-            if (f.getName().trim().equalsIgnoreCase(".nomedia")) {
-                f.delete();
-                continue;
-            }
-        }
-        File recentnew = new File(Environment.getExternalStorageDirectory(), "/WhatsApp/Media/.Statuses");
-        Lfiles = recentnew.listFiles();
-
-        if (Lfiles!=null){
-            Arrays.sort(Lfiles, new Comparator() {
-                public int compare(Object o1, Object o2) {
-
-                    if (((File) o1).lastModified() > ((File) o2).lastModified()) {
-                        return -1;
-                    } else if (((File) o1).lastModified() < ((File) o2).lastModified()) {
-                        return +1;
-                    } else {
-                        return 0;
-                    }
+                f.getName();
+                if (f.getName().trim().equalsIgnoreCase(".nomedia")) {
+                    f.delete();
+                    continue;
                 }
-            });
-            files = new String[Lfiles.length];
-
-
-            int i=0;
-
-            for(File f:Lfiles){
-                files[i]=f.getAbsolutePath();
-                i++;
-
             }
+            File recentnew = new File(Environment.getExternalStorageDirectory(), "/WhatsApp/Media/.Statuses");
+            Lfiles = recentnew.listFiles();
 
-        }else{
-            files=null;
+            if (Lfiles != null) {
+                Arrays.sort(Lfiles, new Comparator() {
+                    public int compare(Object o1, Object o2) {
+
+                        if (((File) o1).lastModified() > ((File) o2).lastModified()) {
+                            return -1;
+                        } else if (((File) o1).lastModified() < ((File) o2).lastModified()) {
+                            return +1;
+                        } else {
+                            return 0;
+                        }
+                    }
+                });
+                files = new String[Lfiles.length];
+
+
+                int i = 0;
+
+                for (File f : Lfiles) {
+                    files[i] = f.getAbsolutePath();
+                    i++;
+
+                }
+
+            } else {
+                files = null;
+            }
         }
-
         if (files!=null){
 
             mNoData.setVisibility(View.GONE);

@@ -1,25 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:title="General">
-        <menu>
-            <group android:checkableBehavior="single">
-                <item
-                    android:id="@+id/users_manual"
 
-                    android:title="Users Manual" />
+            <group android:checkableBehavior="single">
+
                 <item
                     android:id="@+id/more_apps"
-
                     android:title="More Apps" />
+                <item
+                    android:id="@+id/share"
+                    android:title="Share App" />
 
                 <item
-                    android:id="@+id/support"
-                    android:title="Support Us"/>
+                    android:id="@+id/contact_us"
+                    android:title="Contact US"/>
 
             </group>
-        </menu>
-    </item>
-
+    
 
 </menu>

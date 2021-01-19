@@ -58,8 +58,8 @@ public class DataViewer extends AppCompatActivity {
 
         Intent intent = getIntent();
 
-//        mToolbar = findViewById(R.id.main_page_toolbar);
-//        setSupportActionBar(mToolbar);
+        mToolbar = findViewById(R.id.main_page_toolbar);
+        setSupportActionBar(mToolbar);
 
 
         mProgressBar = new ProgressDialog(this);
@@ -68,12 +68,12 @@ public class DataViewer extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-//        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                finish();
-//            }
-//        });
+        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         final String imageUrl = intent.getStringExtra("IMAGEURL");
 

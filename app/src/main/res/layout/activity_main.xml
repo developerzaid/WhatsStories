@@ -2,44 +2,49 @@
 <androidx.drawerlayout.widget.DrawerLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:fitsSystemWindows="true"
+
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:openDrawer="start">
+   >
 
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/topBarss">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:orientation="vertical"
-        android:id="@+id/topBarss"
-        android:layout_height="wrap_content">
 
         <include layout="@layout/app_bar_main"
-            android:id="@+id/main_page_toolbar"
+            android:id="@+id/main_page_toolbar" />
 
-            />
         <androidx.viewpager.widget.ViewPager
+            android:layout_below="@id/main_page_toolbar"
             android:id="@+id/pager"
+            android:layout_marginBottom="100dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <com.google.android.material.tabs.TabLayout
                 android:id="@+id/tab_layout"
+                android:background="#075e54"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
         </androidx.viewpager.widget.ViewPager>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            />
 
+    <com.google.android.gms.ads.AdView
+        android:layout_alignParentBottom="true"
+        xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/adView"
+        android:background="#ffffff"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        ads:adSize="BANNER"
+        ads:adUnitId="ca-app-pub-3940256099942544/6300978111">
+    </com.google.android.gms.ads.AdView>
 
-
-    </LinearLayout>
+</RelativeLayout>
 
 
     <com.google.android.material.navigation.NavigationView
@@ -53,6 +58,7 @@
         app:itemTextColor="#000000"
         app:headerLayout="@layout/nav_header"
         app:menu="@menu/drawer_menu" />
+
 
 
 </androidx.drawerlayout.widget.DrawerLayout>
