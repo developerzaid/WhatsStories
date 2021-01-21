@@ -29,12 +29,15 @@
         android:layout_gravity="center_vertical"
         android:orientation="vertical">
 
-        <ImageView
+        <com.airbnb.lottie.LottieAnimationView
+            android:layout_margin="16dp"
             android:layout_width="match_parent"
             android:layout_height="250dp"
-            app:srcCompat="@drawable/doggy">
-
-        </ImageView>
+            android:layout_centerInParent="true"
+            android:id="@+id/animation_view"
+            app:lottie_rawRes="@raw/nodata"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"/>
 
         <TextView
             android:layout_width="match_parent"

@@ -1,6 +1,7 @@
 package com.hazyaz.whatsstories;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
@@ -16,10 +17,17 @@ import android.widget.Toast;
 public class Permission extends AppCompatActivity {
     private static final int PERMISSION_REQUEST_CODE = 1;
 
+    Toolbar mToolbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_permission);
+
+        mToolbar = findViewById(R.id.main_page_toolbar);
+        setSupportActionBar(mToolbar);
+        getSupportActionBar().setTitle("Whats Stories");
+
 
         Button btn = findViewById(R.id.permisson_storage);
         btn.setOnClickListener(new View.OnClickListener() {
@@ -46,7 +54,6 @@ public class Permission extends AppCompatActivity {
 
 
     }
-
 
     private boolean checkPermission() {
         int result = ContextCompat.checkSelfPermission(Permission.this, android.Manifest.permission.WRITE_EXTERNAL_STORAGE);

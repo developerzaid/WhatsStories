@@ -15,8 +15,7 @@
         android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.WhatsStories">
-        <activity android:name=".PermissionStr"></activity>
+        android:theme="@style/AppTheme">
         <activity android:name=".Permission" />
         <activity android:name=".DataViewer" />
         <activity android:name=".MainActivity">

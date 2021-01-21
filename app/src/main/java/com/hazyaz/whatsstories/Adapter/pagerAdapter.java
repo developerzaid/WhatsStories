@@ -15,6 +15,8 @@ import com.google.android.gms.ads.LoadAdError;
 import com.hazyaz.whatsstories.whatsapp.WhatsAppBSFragment;
 import com.hazyaz.whatsstories.whatsapp.WhatsAppFragment;
 
+import android.os.Handler;
+
 
 public class pagerAdapter extends FragmentPagerAdapter {
 
@@ -59,13 +61,13 @@ public class pagerAdapter extends FragmentPagerAdapter {
 
                     @Override
                     public void onAdOpened() {
-                        mInterstitialAd.loadAd(new AdRequest.Builder().build());
 
                     }
 
                     @Override
                     public void onAdClosed() {
-                        mInterstitialAd.loadAd(new AdRequest.Builder().build());
+
+
                     }
                 });
 
@@ -84,8 +86,7 @@ public class pagerAdapter extends FragmentPagerAdapter {
     @Override
     public CharSequence getPageTitle(int position) {
 
-        switch (position)
-        {
+        switch (position) {
             case 0:
                 return "WhatsApp";
 
@@ -98,4 +99,11 @@ public class pagerAdapter extends FragmentPagerAdapter {
         }
 
     }
+
+
+    void dothis(){
+
+
+    }
+
 }

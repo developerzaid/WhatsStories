@@ -8,6 +8,21 @@
     tools:context=".Permission">
 
 
+    <include layout="@layout/app_bar_main"
+        android:id="@+id/main_page_toolbar" />
+
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:layout_margin="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:id="@+id/animation_view"
+        app:lottie_rawRes="@raw/permission"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"/>
+
+
     <Button
         android:layout_marginTop="16dp"
         android:layout_marginStart="16dp"

@@ -23,7 +23,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingTop="16dp"
-        android:text="Whats Removed : Save Deleted Messages &amp; Stories" />
+        android:text="Whats Stories : Save WhatsApp Status " />
 
 
 </LinearLayout>
