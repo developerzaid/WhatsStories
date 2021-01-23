@@ -18,8 +18,9 @@
         android:horizontalSpacing="2.5dp"
         android:verticalSpacing="2.5dp"
         android:stretchMode="columnWidth"
-        android:gravity="center"
-        />
+        android:gravity="center">
+       
+    </GridView>
 
 
     <LinearLayout

@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 import com.hazyaz.whatsstories.R;
@@ -15,6 +16,7 @@ import java.util.ArrayList;
 public class CustomStoryAdapter extends ArrayAdapter {
 
     private Context mContext;
+    View listItem;
 
     public String[] files;
     private LayoutInflater inflater;
@@ -60,16 +62,26 @@ public class CustomStoryAdapter extends ArrayAdapter {
             if (null == convertView) {
                 convertView = inflater.inflate(R.layout.story_img, parent, false);
             }
+            listItem = convertView;
+            listItem = LayoutInflater.from(mContext).inflate(R.layout.list_story,parent,false);
+            ImageView Iview=listItem.findViewById(R.id.storyview);
+            ImageView play=listItem.findViewById(R.id.playButton);
+
 
             Glide
                     .with(mContext)
-                    .load(files[position])
-                    .into((ImageView) convertView);
+                    .load(files[position]).centerCrop()
+                    .into((ImageView) Iview);
             x++;
+          if (files[position].endsWith(".mp4")) {
+              play.setVisibility(View.VISIBLE);
+
+            }
+
             Log.d("valx",Integer.toString(x));
         }
 
-            return convertView;
+            return listItem;
 
 
     }

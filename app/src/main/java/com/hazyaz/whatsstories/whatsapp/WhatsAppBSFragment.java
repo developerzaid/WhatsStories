@@ -54,7 +54,7 @@ public class WhatsAppBSFragment extends Fragment {
                     continue;
                 }
             }
-            File recentnew = new File(Environment.getExternalStorageDirectory(), "/WhatsApp/Media/.Statuses");
+            File recentnew = new File(Environment.getExternalStorageDirectory(), "/WhatsApp Business/Media/.Statuses");
             Lfiles = recentnew.listFiles();
 
             if (Lfiles != null) {
