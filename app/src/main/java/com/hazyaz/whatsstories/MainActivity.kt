@@ -1,23 +1,20 @@
 package com.hazyaz.whatsstories
 
+import android.Manifest
 import android.annotation.SuppressLint
 import android.app.Activity
-
 import android.content.Intent
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
-
 import android.provider.DocumentsContract
-
 import android.util.Log
 import android.view.MenuItem
 import android.widget.Toast
-
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-
 import androidx.core.view.GravityCompat
 import androidx.documentfile.provider.DocumentFile
 import androidx.viewpager.widget.ViewPager
@@ -27,7 +24,6 @@ import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.tabs.TabLayout
 import com.hazyaz.whatsstories.Adapters.CustomPagerAdapter
-
 import com.hazyaz.whatsstories.Utils.DepthPageTransformer
 import com.hazyaz.whatsstories.Utils.SharePreferencesManager
 import com.hazyaz.whatsstories.databinding.ActivityMainBinding
@@ -42,7 +38,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     private var mInterstitialAd: InterstitialAd? = null
     private var sharedPreferences: SharePreferencesManager? = null
 
-
+    private val REQUEST_EXTERNAL_STORAGE = 1
+    private val PERMISSIONS_STORAGE = arrayOf(
+        Manifest.permission.READ_EXTERNAL_STORAGE,
+        Manifest.permission.WRITE_EXTERNAL_STORAGE
+    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,10 +52,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         setAdds()
         initAds()
         initViews()
-    }//permission is automatically granted on sdk<23 upon installation
+    }
 
-
-
+    @RequiresApi(Build.VERSION_CODES.M)
 
 
 
@@ -100,7 +99,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 startActivity(intent34)
             }
             catch (e: Exception) {
-                Toast.makeText(applicationContext, "Mailing Problem", Toast.LENGTH_LONG).show();
+                Toast.makeText(applicationContext, "Mailing Problem", Toast.LENGTH_LONG).show()
             }
         }
         val drawer = binding!!.drawerLayout
@@ -130,7 +129,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     private fun initViews() {
-
+//        RestarterBroadcastReceiver.startWorker(applicationContext)
 
         sharedPreferences = SharePreferencesManager(applicationContext)
 
@@ -139,7 +138,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         supportActionBar!!.title = "Whats Status"
         mViewPager = binding!!.viewPagerMain
 
-
+//        mCustomPagerAdapter = new CustomPagerAdapter(getSupportFragmentManager());
+//        mViewPager.setAdapter(mCustomPagerAdapter);
         mViewPager!!.setPageTransformer(true, DepthPageTransformer())
         mTabLayout = binding!!.tabBarMain
         mTabLayout!!.setupWithViewPager(mViewPager)
@@ -157,7 +157,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         navigationView.setNavigationItemSelectedListener(this)
 
 
-
+//      For showing Interstial Ads while swiping between tabs and banner ad below screen
         val pagerAdapter = CustomPagerAdapter(supportFragmentManager)
         mViewPager!!.adapter = pagerAdapter
         //change Tab selection when swipe ViewPager
@@ -207,7 +207,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                     val documentsTree =
                         DocumentFile.fromTreeUri(application, directoryUri) ?: return
                     val childDocuments = documentsTree.listFiles().asList()
-
+                    Log.d("DATA____", documentsTree.name.toString())
+                    Log.d("DATA____", childDocuments.toString())
+                    Log.d("DATA____", childDocuments.size.toString())
 
                     if (directoryUri.toString() == "content://com.android.externalstorage.documents/tree/primary%3AAndroid%2Fmedia%2Fcom.whatsapp%2FWhatsApp%2FMedia%2F.Statuses"
                     ) {
@@ -217,7 +219,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                             "Permission granted",
                             Toast.LENGTH_SHORT
                         ).show()
-
+                        sendBroadcastMsg("status")
                     } else {
                         Toast.makeText(
                             this@MainActivity,
@@ -250,7 +252,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                             "Permission granted",
                             Toast.LENGTH_SHORT
                         ).show()
-
+                        sendBroadcastMsg("status")
                     } else {
                         Toast.makeText(
                             this@MainActivity,
@@ -265,6 +267,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         }
     }
 
+    private fun sendBroadcastMsg(name: String) {
+        val intent = Intent(name)
+        intent.setPackage(packageName)
+        intent.putExtra("message", name)
+        applicationContext.sendBroadcast(intent)
+    }
 
 
     private fun setAdds() {

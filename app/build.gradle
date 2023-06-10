@@ -9,7 +9,7 @@ android {
         applicationId "com.hazyaz.whatsstories"
         minSdkVersion 19
         targetSdkVersion 33
-        versionCode 100
+        versionCode 101
         versionName "2.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
